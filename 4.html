@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04. 할당, 산술, 단항 연산자</title>
+</head>
+<body>
+<h1>04. 할당, 산술, 단항 연산자</h1>
+
+<h2>표현식과 연산자</h2>
+<p>표현식이란? 값을 나타내거나, 사칙연산을 하거나, 값을 변수에 할당하는 형태를 통칭한다.</p>
+		<pre>
+		ex code)
+		1 + 2
+		total = 1 + 2
+		</pre>
+
+<p>연산자(Operator)는 +, -, /, *, =, &lt;, &gt;를 포함한다. 또한 오브젝트는 생성하는 new 연산자, 데이터 타입을 구하는 typeof 연산도 포함된다.</p>
+<br/>
+
+<h2>할당 연산자</h2>
+<p>할당 연산자(Assignment Operator)는 =를 나타내며, =을 기준으로 오른쪽 표현식의 결과를 왼쪽 표현식에 할당한다.</p>
+<ol>
+	<li>단일 할당 연산자 (=치환 연산자, 대입 연산자)</li>
+		<p>단일 할당(Simple Assignment)연산자는 = 형태를 의미하며, =를 기준으로 오른쪽 표현식의 결과를 왼쪽 표현식에 할당한다..</p>
+			<pre>
+			ex code)
+			var sports = 'swim';
+			var value = 1 + 2;
+			var aa = bb = cc = 1;		// 좋은 코딩이 아님
+			var plus = 5;
+			plus += 3;		// plus = plus + 3 과 동일
+			</pre>
+			<button onclick="consolelog1()">
+				Script
+			</button>
+			<script>
+				function consolelog1(){
+					var sports = 'swim';
+					var value = 1 + 2;
+					var aa = bb = cc = 1;
+					var plus = 5;
+					console.log(sports);
+					console.log(value);
+					console.log(aa);
+					console.log(plus);
+					console.log(plus += 3);
+				}
+			</script>
+			<br/>
+			<br/>
+
+	<li>복합 할당 연산자</li>
+		<p>복합 할당(Compound Assignment) 연산자는 +=와 같이 =앞에 다른 연산자(*, /, +, -, &lt, &gt, |, &등)를 사용한 형태</p>
+			<pre>
+			ex code)
+			var lus = 5;
+			plus += 3;		// plus = plus + 3 과 동일
+			</pre>
+			<button onclick="consolelog2()">
+				Script
+			</button>
+			<script>
+				function consolelog2(){
+					var plus = 5;
+					console.log(plus);
+					console.log(plus += 3);
+				}
+			</script>
+</ol>
+<br/>
+<br/>
+
+
+<h2>더하기 연산자</h2>
+<p>더하기 연산자는 값을 더하거나 문자열을 연결한다. +를 중심으로 왼쪽 피연산자와 오른쪽 피연산자가 모두 숫자타입이면 값을 더하고 하나라도 문자열 타입이면 문자열로 연결한다. 더하기 연산자는 왼쪽에서 오른쪽으로 더하기를 한다.</p>
+	<pre>
+			ex code)
+			console.log(1 + 2);
+			console.log('123' + '500');
+			console.log(123 + '500');
+			var value = 123 + "";
+			console.log(value);
+			console.log(typeof value);
+			</pre>
+			<button onclick="consolelog3()">
+				Script
+			</button>
+			<script>
+				function consolelog3(){
+					console.log(1 + 2);
+					console.log('123' + '500');
+					console.log(123 + '500');
+					var value = 123 + "";
+					console.log(value);
+					console.log(typeof value);
+				}
+			</script>
+<ol>
+	<li>숫자 타입 변환</li>
+		<p>자바스크립트는 더하기를 할때 양쪽 피연산자를 아래의 표와 같이 숫자 값으로 변환한후 더하기를 한다.</p>
+		<table border='1px'>
+		<caption>데이터 타입에 따른 숫자 값 변환</caption>
+		<thead>
+			<tr>
+				<th>데이터 타입</th>
+				<th>결과 값</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Undefined</td>
+				<td>NaN</td>
+			</tr>
+			<tr>
+				<td>Null</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Boolean</td>
+				<td>true이면 1, false이면 0</td>
+			</tr>
+			<tr>
+				<td>String</td>
+				<td>값이 숫자이면 숫자값, 아니면 문자열</td>
+			</tr>
+			<tr>
+				<td>Number</td>
+				<td>숫자값</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<pre>
+		ex code)
+		console.log(10 + null);
+		console.log(null + null);
+		console.log(10 + true);
+		console.log(true + true);
+		console.log(10 + false);
+		console.log(10 + undefined);		// 더한값이 숫자가 아니기 때문에 NaN
+		console.log(10 + '1');				// P53. 책내용과 다름
+		console.log('1' + 10);
+		console.log(10 + 'A');
+		</pre>
+		<button onclick="consolelog4()">
+			Script
+		</button>
+		<script>
+			function consolelog4(){
+				console.log(10 + null);
+				console.log(null + null);
+				console.log(10 + true);
+				console.log(true + true);
+				console.log(10 + false);
+				console.log(10 + undefined);
+				console.log(10 + '1');
+				console.log('1' + 10);
+				console.log(10 + 'A');
+			}
+		</script>
+		<br/><br/>
+	<li>자바스크립트 처리</li>
+		<p>1. +를 기준으로 왼쪽 피연산자를 확인하고 값을 구한다.</p>
+		<p>2. +를 기준으로 오른쪽 피연산자를 확인하고 값을 구한다.</p>
+		<p>3. 왼쪽 값을 초기값으로 변환</p>
+		<p>4. 오른쪽 값을 초기값으로 변환</p>
+		<p>5. 양쪽 중에 하나라도 문자열 타이이면 왼쪽 값에 오른쪽 값을 연결하여 반환</p>
+		<p>6. 양쪽 값을 숫자값으로 변환된 값을 더하고 결과값을 반환</p>
+		
+		<p>초기값 변환은 아래의 표와 같이 초기값을 반환받는 처리를 의미. 아래의 ㅛ에서 볼수 있듯이 데이터 타입이 Undefined, Null, Boolean, Number, String이면 값을 그대로 반환, Object는 값이 달라짐.</P>
+		<table border='1px'>
+		<caption>초기값 변환</caption>
+		<thead>
+			<tr>
+				<th>데이터 타입</th>
+				<th>결과</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Undefined</td>
+				<td>값을 변환하지 않고 값 반환</td>
+			</tr>
+			<tr>
+				<td>Null</td>
+				<td>값을 변환하지 않고 값 반환</td>
+			</tr>
+			<tr>
+				<td>Boolean</td>
+				<td>값을 변환하지 않고 값 반환</td>
+			</tr>
+			<tr>
+				<td>Number</td>
+				<td>값을 변환하지 않고 값 반환</td>
+			</tr>
+			<tr>
+				<td>String</td>
+				<td>값을 변환하지 않고 값 반환</td>
+			</tr>
+			<tr>
+				<td>Object</td>
+				<td>오브젝트의 초기값 반환<br>(해당 사항은 추후 오브젝트 부분 진행후 다시 보기)</td>
+			</tr>
+		</tbody>
+	</table>
+</ol>
+<br/>
+
+<h2>빼기 연산자</h2>
+<p>빼기 연산자는 -를 기준으로 왼쪽 피연산자 값에서 오른쪽 피연산자 값을 빼고 결과를 반환, 빼기 연산자가 다수이면 같은 순서로 왼쪽에서 오른쪽으로 뺄셈을 하고 그 결과로 다시 오른족 값을 뺀다. 빼기 연산자는 피연산자가 숫자 값이면 문자열 타입이라도 연결하지 않고 뺄세을 한다.</p>
+<br/>
+	<pre>
+		ex code)
+		console.log(30 - 20);
+		console.log('30' - 20);
+		console.log(30 - '20');
+		console.log('70' - '20' - '10');
+		</pre>
+		<button onclick="consolelog4()">
+			Script
+		</button>
+		<script>
+			function consolelog4(){
+				console.log(30 - 20);
+				console.log('30' - 20);
+				console.log(30 - '20');
+				console.log('70' - '20' - '10');
+			}
+		</script>
+		<br/><br/>
+
+<h2>곱하기 연산자</h2>
+<p>승제 연산자(Multiplicative Operators)는 가감승제에서 가감(+, -)을 제외한 승제(*, /)를 나타냄.</p>
+<p>승제 연사자에는 곱하기(*), 나누기(/), 나머지(%) 연산자가 있다. 여기서는 곱하기 연산자를 설명.</p>
+<p>곱하기 연산자는 *를 기준으로 왼쪽 피연산자와 오른쪽 피연산자를 곱한다.</p>
+<br/>
+
+<ol>
+	<li>곱하기 기준</li>
+	<p>- 문자열 타입이라도 값이 숫자이면 곱한다.</p>
+	<p>- 양쪽에서 하나라도 숫자가 아니면 NaN을 반환한다.</p>
+	<p>- 양쪽에서 하나라도 0이면 0을 반환한다.</p>
+	<p>- 무한대에 0을 곱하면 NaN을 반환한다.</p>
+	<p>- 양쪽이 모두 무한대이면 무한대 값을 반환한다.</p>
+	<p>- 양쪽 부호가 같으면 양수 값을 반환하고 부호가 다르면 음수 값을 반환합니다.</p>
+	<pre>
+		ex code)
+		console.log(20 * '12');		// 20 * 12
+		console.log(20 * true);		// 20 * 1
+		console.log(20 * false);	// 20 * 0
+		console.log(20 * null);		// 20 * 0
+		console.log(20 * 10);		// 20 * 10
+		console.log(20 * -10);		// 20 * -10
+		console.log(-20 * -10);		//	-20 * -10
+		console.log(Infinity * 0);	// NaN
+		console.log(Infinity * 12);	// Infinity
+		console.log(Infinity * Infinity);	// Infinity
+		console.log(Infinity * -Infinity);	// -Infinity
+		</pre>
+		<button onclick="consolelog5()">
+			Script
+		</button>
+		<script>
+			function consolelog5(){
+				console.log(20 * '12');
+				console.log(20 * true);
+				console.log(20 * false);
+				console.log(20 * null);
+				console.log(20 * 10);
+				console.log(-20 * -10);
+				console.log(20 * -10);
+				console.log(Infinity * 0);
+				console.log(Infinity * 12);
+				console.log(Infinity * Infinity);
+				console.log(Infinity * -Infinity);
+			}
+		</script>
+		<br/><br/>
+	<li>곱셈 고려사항</li>
+		<p> 정수와 실수
+		<pre>
+		ex code)
+		console.log(2.3 * 3);		// 6.8999999999999995 (비정상)
+		console.log(3 * 2.3);		// 6.8999999999999995 (비정상)
+		console.log(2.3 * 3.1);		// 7.13 (정상)
+		console.log(2 * 3);		// 6 (정상)
+		console.log(2.3 * 10 * 3 / 10);	// 6.9 (정상)
+		</pre>
+		<button onclick="consolelog6()">
+			Script
+		</button>
+		<script>
+			function consolelog6(){
+				console.log(2.3 * 3);	
+				console.log(3 * 2.3);	
+				console.log(2.3 * 3.1);
+				console.log(2 * 3);
+				console.log(2.3 * 10 * 3 / 10);	
+			}
+		</script>
+		<br/><br/>
+		<p>6.8999999999999995 값은 컴퓨터에서 실수를 표현하기 위하여 사용하는 방법중의 하나인 IEEE 754 표준으로 표시한 값, 5대 브라우져에서 동일하게 출력, 정수와 실수를 곱할때 발생, 실수끼리 또는 정수끼리 곱할경우 발생하지 않음</p>
+		<p>링크 : <a href="http://egloos.zum.com/studyfoss/v/4956717" target="_blank">IEEE 754</a></p>
+		<p>사람이 사용하는 정상적인 값이 나오게 하려면, 정수와 정수를 곱하면 해결, 실수를 정수로 변환하고 변환된 값을 곱하고 그결과를 정수로 나눠준다. (두번째 예제)</p>
+</ol>
+<br/><br/>
+
+
+<h2>나누기 연산자</h2>
+<p>나누기 연산자는 / 을 기준으로 왼쪽 피연산자를 오른쪽 피연산자로 나눈다.</p>
+<p>아래와 같은 기준으로 나눈다. 자바스크립트는 부동 소수점 연산을 하므로 정수가 아닌 소수를 반환한다.</p>
+<br/>
+<ol>
+	<li>나누기 기준</li>
+	<p>- 문자열 타입이라도 값이 숫자이면 나눈다.</p>
+	<p>- 양쪽에서 하나라도 숫자가 아니면 NaN을 반환한다.</p>
+	<p>- 0을 0으로 나누면 NaN 반환한다.</p>
+	<p>- 무한대에 무한대로 나누면 NaN을 반환한다.</p>
+	<p>- 숫자값을 0으로 나누면 무한대 값을 반환한다.</p>
+	<p>- 무한대를 0으로 나누면 무한대를 반환한다.</p>
+	<p>- 숫자 값을 무한대로 나누면 0을 반환한다.</p>
+	<p>- 양쪽 부호가 같으면 양수 값을 반환하고 부호가 다르면 음수 값을 반환한다.</p>
+	
+	<pre>
+		ex code)
+		console.log(3 / '1');		// 3
+		console.log(3 / 'A');		// NaN
+		console.log(0 / 0);		// NaN
+		console.log(Infinity / Infinity)	// NaN
+		console.log(3 / 0);		// Infinity
+		console.log(Infinity / 0);	// Infinity
+		console.log(5 / Infinity);	// 0
+		console.log(5 / 1)			// 5
+		console.log(-5 / 1)			// -5
+		console.log(5 / -1)			// -5
+		console.log(0 / 25);		// 0
+		console.log(3 / 0);		// Infinity
+		console.log(12 / true);		// 12
+		console.log(12 / false);	// Infinity
+		console.log(12 / null);		// Infinity
+
+		</pre>
+		<button onclick="consolelog7()">
+			Script
+		</button>
+		<script>
+			function consolelog7(){
+				console.log(3 / '1');		// 3
+				console.log(3 / 'A');		// NaN
+				console.log(0 / 0);		// NaN
+				console.log(Infinity / Infinity)	// NaN
+				console.log(3 / 0);		// Infinity
+				console.log(Infinity / 0);	// Infinity
+				console.log(5 / Infinity);	// 0
+				console.log(5 / 1)			// 5
+				console.log(-5 / 1)			// -5
+				console.log(5 / -1)			// -5
+				console.log(0 / 25);		// 0
+				console.log(3 / 0);		// Infinity
+				console.log(12 / true);		// 12
+				console.log(12 / false);	// Infinity
+				console.log(12 / null);		// Infinity
+			}
+		</script>
+		<br/><br/>
+	<li>개발팁</li>
+		<p>나누기 전에 정상적으로 나눗셈이 될 것인가 체크하는 것이 좋은 코딩입니다.</p>
+		<p>숫자 값을 숫자 값으로 나눌때 앞의 곱하기와 같이 IEEE 754 따라 처리하게 되므로 사람의 생각과 다른값으로 변환될 수 있다.</p>
+		<p>이때 분모와 분자를 정수로 변환한 후 나눗셈을 하면됩니다.</p>
+		<br/><br/>
+
+<h2>나머지 연산자</h2>
+<p>나머지 연산은 %로 표기하면 %을 기준으로 왼쪽 연산자를 오른쪽 연산자로 나눈 나머지 값을 반환</p>
+	
+	<pre>
+		ex code)
+		console.log(3 % 2);		// 1
+		console.log(3 % 3);		// 0
+
+		</pre>
+		<button onclick="consolelog8()">
+			Script
+		</button>
+		<script>
+			function consolelog8(){
+				console.log(3 % 2);		// 1
+				console.log(3 % 3);		// 0
+			}
+		</script>
+<br/><br/>
+<ol>
+	<li>나머지 연산 고려사항 (이해가 가지 않음)</li>
+		<pre>
+		ex code)
+		console.log(5 % 2.5);			// 0
+		console.log(5 % 2.4);			// 0.20000000000000018	(IEEE 754 표현값)
+		console.log(5 - (2 * 2.4));		// 0.20000000000000018	(IEEE 754 표현값)
+		console.log((5 * 10 - (2 * 2.4 * 10)) / 10);		// 0.2	((IEEE 754 값이 아님)	=> 두번째 세번째 식을 해당 식과 같이 정수로 만들어서 계산하면 사람이 알아볼수 있는 값
+
+		</pre>
+		<button onclick="consolelog9()">
+			Script
+		</button>
+		<script>
+			function consolelog9(){
+				console.log(5 % 2.5);		// 0
+				console.log(5 % 2.4);		// 0.20000000000000018
+				console.log(5 - (2 * 2.4));		// 0.20000000000000018
+				console.log((5 * 10 - (2 * 2.4 * 10)) / 10);		// 0.2
+			}
+		</script>
+
+</ol>
+
+<h2>단항 +연산자</h2>
+<p>단한 +연산자는 피연산자를 숫자 타입으로 변환</p>
+<br/>
+
+	<pre>
+		ex code)
+		var two = -2;
+		console.log(+two);		// -2 (+연산자는 음수 값을 양수 값으로 바꾸지 않는다.)
+		var seven = +'7';		// +연산자가 문자열 7을 숫자로 변환
+		console.log(typeof seven);
+		</pre>
+		<button onclick="consolelog10()">
+			Script
+		</button>
+		<script>
+			function consolelog10(){
+				var two = -2;
+				console.log(+two);
+				var seven = +'7';
+				console.log(typeof seven);
+			}
+		</script>
+<br/><br/>
+<ol>
+	<li>단항 +연산 활용</li>
+		<pre>
+		ex code)
+		var six = '6';
+		     five = 5;
+		console.log(six + five);			// 65 (문자열로 연결)
+		console.log(+six + five);		// 11 (6문자 앞에 +연산자가 붙어서 숫자가 된다)
+		console.log(five + +six);		// 11 (6문자 앞에 +연산자가 붙어서 숫자가 된다)
+		</pre>
+		<button onclick="consolelog11()">
+			Script
+		</button>
+		<script>
+			function consolelog11(){
+				var six = '6';
+					 five = 5;
+				console.log(six + five);			// 
+				console.log(+six + five);		//
+				console.log(five + +six);		//
+			}
+		</script>
+
+</ol>
+
+<h2>단항 -연산자</h2>
+<p>단항 -연산자는 피연산자를 숫자 타입으로 변환하고 부호를 바꾼다. -이면 +로, +이면 -로 변환한다.</p>
+<br/>
+	<pre>
+		ex code)
+		var five = 5;
+		console.log(-five);		// -5
+		var six = -6;		// -연산자가 문자열 -6을 숫자로 변환
+		console.log(typeof six);
+		</pre>
+		<button onclick="consolelog12()">
+			Script
+		</button>
+		<script>
+			function consolelog12(){
+				var five = 5;
+				console.log(-five);		// -2 (+연산자는 음수 값을 양수 값으로 바꾸지 않는다.)
+				var six = -6;		// +연산자가 문자열 7을 숫자로 변환
+				console.log(typeof six);
+			}
+		</script>
+<br/><br/>
+
+<h2>후치 증가 연산자</h2>
+<p>Value++ 형태로 연산자가 뒤에 있는 형태, 후치 증가 연산자는 문장을 수행한후 값을 증가</p>
+<br/>
+	<pre>
+		ex code)
+		var plus = 1;
+		console.log(5 + plus++);		// 6
+
+		plus = 2;
+		var value = plus++ +1;		// plus + 1 한다음 ++처리
+		console.log(value);		// 3
+		console.log(plus);		// 3
+
+		value = 7;
+		value++;
+		console.log(value);		// 8
+		</pre>
+		<button onclick="consolelog13()">
+			Script
+		</button>
+		<script>
+			function consolelog13(){
+				var plus = 1;
+				console.log(5 + plus++);
+
+				plus = 2;
+				var value = plus++ +1;
+				console.log(value);
+				console.log(plus);
+
+				value = 7;
+				value++;
+				console.log(value);
+			}
+		</script>
+<br/><br/>
+
+<h2>전치 증가 연산자</h2>
+<p>++Value형태, 연산자가 앞에 있는 형태로, 전치 증가 연산자는 값을 증가시키고 문장을 수행</p>
+<br/>
+	<pre>
+		ex code)
+		var plus = 2;
+		console.log(++plus + 5);		// 8
+
+		plus = 2;
+		console.log(3 + ++plus);		// 6
+		</pre>
+		<button onclick="consolelog14()">
+			Script
+		</button>
+		<script>
+			function consolelog14(){
+				var plus = 2;
+				console.log(++plus + 5);
+
+				plus = 2;
+				console.log(3 + ++plus);
+			}
+		</script>
+<br/><br/>
+
+<h2>후치 감소 연산자</h2>
+<p>Value-- 형태로 연산자가 뒤에 있는 형태, 후치 감소 연산자는 문장을 수행한후 값을 감소</p>
+<br/>
+	<pre>
+		ex code)
+		var minus = 3;
+		console.log(minus-- + 5);		// 8
+		</pre>
+		<button onclick="consolelog15()">
+			Script
+		</button>
+		<script>
+			function consolelog15(){
+				var minus = 3;
+				console.log(minus-- + 5);
+			}
+		</script>
+<br/><br/>
+
+
+<h2>전치 감소 연산자</h2>
+<p>--Value형태, 연산자가 앞에 있는 형태로, 전치 감소 연산자는 값을 감소시키고 문장을 수행</p>
+<br/>
+	<pre>
+		ex code)
+		var minus = 3;
+		console.log(--minus + 5);		// 7
+		</pre>
+		<button onclick="consolelog16()">
+			Script
+		</button>
+		<script>
+			function consolelog16(){
+				var minus = 3;
+				console.log(--minus + 5);
+			}
+		</script>
+<br/><br/>
+
+<h2>논리 NOT 연산자</h2>
+<p>논리 NOT 연산자는 !Value와 같이 피연산자 앞에 느낌표(!)를 작성합니다. 피연산자 값을 불린 값으로 변환하고 결과가 true이면 false로, false면 true로 변환</p>
+<br/>
+
+	<table border='1px'>
+		<caption>Boolean 변환</caption>
+		<thead>
+			<tr>
+				<th>데이터 타입</th>
+				<th>변환 값</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Undefined</td>
+				<td>false</td>
+			</tr>
+			<tr>
+				<td>Null</td>
+				<td>false</td>
+			</tr>
+			<tr>
+				<td>Boolean</td>
+				<td>변환하지 않고 그대로 반환</td>
+			</tr>
+			<tr>
+				<td>String</td>
+				<td>값이 있으면 true, 값이 없으면 false</td>
+			</tr>
+			<tr>
+				<td>Number</td>
+				<td>값이 0 또는 NaN이면 false, 아니면 true</td>
+			</tr>
+			<tr>
+				<td>Object</td>
+				<td>true</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<pre>
+		ex code)
+		var value = true;
+		console.log(!value);		// false
+		console.log(!5);			// false
+		console.log(!!"A");		// true
+		</pre>
+		<button onclick="consolelog17()">
+			Script
+		</button>
+		<script>
+			function consolelog17(){
+				var value = true;
+				console.log(!value);		// false
+				console.log(!5);			// false
+				console.log(!!"A");		// true
+			}
+		</script>
+<br/><br/>
+
+
+<h2>비트 NOT 연산자</h2>
+<p>비트 NOT 연산자는 피연산자 앞에 ~를 사용한다. 피연산자 값을 2진수 비트(bit)로 변환 후 비트값을 반대로 반환하므로 양수/음수 사인(sign) 부호가 바뀐다.</p>
+<p>* 양수는 음수로 바꾸면서 -1을 더하고, 음수는 양수로 바꾸면서 1을 뺀다.</p>
+<p>값 0에 ~연산자를 사용하면 사인 부호가 바뀌게 되므로 -1이 되며, ~-1은 0이 됩니다.</p>
+<p></p>
+<br/>
+	<pre>
+		ex code)
+		console.log(~0);		// -1
+		console.log(~-1);	// 0
+		console.log(~5);		// -6
+		</pre>
+		<button onclick="consolelog18()">
+			Script
+		</button>
+		<script>
+			function consolelog18(){
+				console.log(~0);
+				console.log(~-1);
+				console.log(~5);
+			}
+		</script>
+<br/><br/>2017-04-16
+
+</body>
+</html>
